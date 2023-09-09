@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Zuri.css">
+    <title>Personal Data Showcase</title>
+</head>
+<body>
+    <header>
+        <h1>Personal Data Showcase</h1>
+    </header>
+    <div class="container">
+        <div class="data-item" data-testid="slackUserName">
+            <label>Slack Name:</label>
+            <span>Song Martins</span>
+        </div>
+        <div class="data-item" data-testid="slackDisplayImage">
+            <label>Slack Display Picture:</label>
+            <img src="https://ca.slack-edge.com/T05FFAA91JP-U05R92D7BS9-941947718e7b-512" alt="Your Slack Username">
+        </div>
+        <div class="data-item" data-testid="currentDayOfTheWeek">
+            <label>current Day:</label>
+            <span id="currentDay"></span>
+        </div>
+        <div class="data-item" data-tsetid="currentUTCTime">
+            <label>Current UTC Time:</label>
+            <span id="currentUTC"></span>
+        </div>
+        <div class="data-item" data-testid="myTrack">
+            <label>Track:</label>
+            <span>Front End Track</span>
+        </div>
+    </div>
+    <footer>
+        <div class="github-link" data-testid="githubURL">
+            <a href="https://github.com/thesongmartins/HNGx/" target="_blank">GitHub Repository</a>
+        </div>
+    </footer>
+    <script>
+        function updateCurrentDay() {
+            const daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+            const now = new Date();
+            const dayOfWeek = daysOfWeek[now.getUTCDay()];
+            document.getElementById('currentDay').textContent = dayOfWeek;
+        }
+        updateCurrentDay();
+        setInterval(updateCurrentDay, 1000 * 60 * 60 * 24);
+        function updateUTCTime() {
+            const now = new Date();
+            const utcTimeCode = now.toISOString();
+            document.getElementById('currentUTC').textContent = utcTimeCode;
+        }
+        updateUTCTime();
+        setInterval(updateUTCTime, 1000);
+        updateDateTime();
+        setInterval(updateDateTime, 1000);
+    </script>
+</body>
+</html>
